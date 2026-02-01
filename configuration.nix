@@ -86,6 +86,13 @@
     flake = "/home/kaezr/.config/nixos";
   };
 
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+  };
+
+  programs.dms-shell.enable = true;
+
   users.extraUsers.kaezr = {
     shell = pkgs.fish;
   };
