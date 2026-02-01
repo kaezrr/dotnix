@@ -101,6 +101,7 @@
   programs.git.enable = true;
   programs.zoxide.enable = true;
   programs.bat.enable = true;
+  programs.lazygit.enable = true;
 
   programs.neovim = {
     enable = true;
@@ -131,6 +132,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    gcc
+    tree-sitter
+    ripgrep
+    fd
+
     kitty
     nerd-fonts.jetbrains-mono
 
@@ -138,8 +144,14 @@
     chezmoi
     eza
 
-    nixfmt
     nixd
+    lua-language-server
+
+    nixfmt
+    black
+    tombi
+    stylua
+    prettier
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
