@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
   ];
 
-# Bootloader.
+  # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/vda";
   boot.loader.grub.useOSProber = true;
@@ -98,7 +98,7 @@
 
   programs.fish.enable = true;
   programs.firefox.enable = true;
-  programs.git.enable = true; 
+  programs.git.enable = true;
   programs.zoxide.enable = true;
   programs.bat.enable = true;
 
@@ -109,14 +109,12 @@
     vimAlias = true;
   };
 
-
   programs.nh = {
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/kaezr/.config/nixos";
   };
-
 
   users.extraUsers.kaezr = {
     shell = pkgs.fish;
@@ -133,17 +131,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    fastfetch
     kitty
-    nixfmt
+    nerd-fonts.jetbrains-mono
+
+    fastfetch
     chezmoi
     eza
-    nerd-fonts.jetbrains-mono
-    tree-sitter
+
+    nixfmt
+    nixd
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
-  "JetBrainsMono Nerd Font"
+    "JetBrainsMono Nerd Font"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
