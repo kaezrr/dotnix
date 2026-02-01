@@ -37,8 +37,16 @@
 
   services.xserver.enable = true;
 
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.greetd = {
+    enable = true;
+    useTextGreeter = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
 
   services.xserver.xkb = {
     layout = "us";
@@ -60,9 +68,6 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-    ];
-    packages = with pkgs; [
-      kdePackages.kate
     ];
   };
 
@@ -91,7 +96,15 @@
     package = pkgs.niri;
   };
 
-  programs.dms-shell.enable = true;
+  programs.dms-shell = {
+    enable = true;
+    systemd = {
+      enable = true;
+      restartIfChanged = true;
+    };
+
+    enableSystemMonitoring = true;
+  };
 
   users.extraUsers.kaezr = {
     shell = pkgs.fish;
