@@ -96,15 +96,7 @@
     package = pkgs.niri;
   };
 
-  programs.dms-shell = {
-    enable = true;
-    systemd = {
-      enable = true;
-      restartIfChanged = true;
-    };
-
-    enableSystemMonitoring = true;
-  };
+  programs.waybar.enable = true;
 
   users.extraUsers.kaezr = {
     shell = pkgs.fish;
@@ -140,6 +132,10 @@
     prettier
 
     inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
+
+    fuzzel
+    dunst
+    hyprlock
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
